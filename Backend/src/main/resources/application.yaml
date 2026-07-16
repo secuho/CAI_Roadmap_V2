@@ -1,3 +1,16 @@
 spring:
   application:
     name: CAI_Roadmap_V2
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/cai_roadmap}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+jwt:
+  secret: ${JWT_SECRET:please-override-this-secret-with-an-env-var-in-production}
+  access-token-expiration-ms: 1800000
+  refresh-token-expiration-ms: 1209600000

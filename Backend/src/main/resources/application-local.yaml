@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:cairoadmap;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+jwt:
+  secret: local-dev-only-secret-key-do-not-use-in-production-0123456789
