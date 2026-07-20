@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@import "@fontsource/ibm-plex-sans-kr/400.css";
+@import "@fontsource/ibm-plex-sans-kr/500.css";
+@import "@fontsource/ibm-plex-sans-kr/600.css";
+@import "@fontsource/ibm-plex-sans-kr/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  /* Dongguk gold-lotus palette: warm orange -> ember -> gold, grounded in the
+     university's own mark and campus photography rather than an invented accent. */
+  --color-flame: #f2711c;
+  --color-flame-dark: #d9601a;
+  --color-ember: #d94f2b;
+  --color-gold: #f5b93d;
+  --color-ink: #2a1a0d;
+  --color-ink-soft: #5c4a3a;
+  --color-cream: #fff8f0;
+  --color-cream-2: #fbead9;
+  --color-cream-3: #f2dcc2;
+  --color-verified: #3f8f73;
+  --color-verified-soft: #dcece6;
+  --color-alert: #c1483a;
+  --color-alert-soft: #f6ddd6;
+
+  --font-sans: "IBM Plex Sans KR", "Pretendard", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gradient-flame {
+  background-image: linear-gradient(135deg, var(--color-flame) 0%, var(--color-ember) 60%, var(--color-gold) 130%);
+}
+
+.text-gradient-flame {
+  background-image: linear-gradient(90deg, var(--color-flame), var(--color-ember));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@keyframes draw-in {
+  from {
+    stroke-dashoffset: var(--draw-length, 300);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw {
+  stroke-dasharray: var(--draw-length, 300);
+  animation: draw-in 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes fade-cross {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  8%,
+  33% {
+    opacity: 1;
+  }
+}
+
+.bg-slide {
+  animation: fade-cross 18s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .bg-slide {
+    animation: none;
+    opacity: 1 !important;
+  }
+}
